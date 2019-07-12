@@ -1,0 +1,17 @@
+{
+    "name": "crispwp/rst",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Luke Kortunov",
+            "email": "ikortunov@crispwp.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "rst\\" : "inc/classes/" }
+    },
+    "require": {
+        "symfony/var-dumper": "^3.4",
+        "tgmpa/tgm-plugin-activation": "^2.6"
+    }
+}

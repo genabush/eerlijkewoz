@@ -1,0 +1,19 @@
+.error-block {
+  padding: 15% 0;
+  &__title {
+    color: $blue;
+    font-size: 70px;
+    text-align: center;
+  }
+  @include res(1200){
+    &__title {
+      font-size: 50px;
+    }
+  }
+  @include res(768){
+     &__title {
+      font-size: 40px;
+    }
+  }
+}
+

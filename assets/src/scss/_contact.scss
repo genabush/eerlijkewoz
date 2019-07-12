@@ -1,0 +1,448 @@
+.main-banner {
+  background: 100% 111px no-repeat;
+  background-color: $white;
+  padding: 205px 0 105px 0;
+  &__title {
+    color: $dark-blue;
+    margin-bottom: 14px;
+  }
+  &__text {
+    color: $black;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.85;
+    margin-bottom: 53px;
+  }
+  p {
+    margin-bottom: 40px;
+    color: #5d5d5d;
+    font-family: $open-sans;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.625;
+  }
+
+  &__subtitle {
+    color: $black;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.27;
+    margin-bottom: 36px;
+    font-family: $bitter;
+  }
+  &__row {
+    display: flex;
+  }
+  .col {
+    width: 61%;
+    padding-left: 12%;
+  }
+  &__quote {
+    margin-top: 0;
+    margin-bottom: 45px;
+    color: #373737;
+    font-family: $bitter;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 52px;
+    & .name {
+      color: #373737;
+      font-family: $open-sans;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 26px;
+    }
+  }
+  &__bottom {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+  &__bottom .col {
+    width: calc(50% - 60px);
+  }
+  @include res(1480) {
+    background-size: 50% auto;
+    .col {
+      width: 70%;
+      padding-left: 0;
+    }
+    &__text {
+      color: $black;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.85;
+      margin-bottom: 53px;
+    }
+    p {
+      margin-bottom: 40px;
+      color: #5d5d5d;
+      font-family: $open-sans;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.625;
+    }
+
+    &__subtitle {
+      color: $black;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.27;
+      margin-bottom: 36px;
+    }
+
+    &__row {
+      display: flex;
+    }
+    .col {
+      width: 61%;
+      padding-left: 12%;
+    }
+  }
+
+  @include res(1400) {
+    background-size: 50% auto;
+    .col {
+      width: 70%;
+      padding-left: 0;
+    }
+  }
+  @include res(1024) {
+    background-size: 40%;
+    background-position: 100% 50px;
+    padding: 50px 0;
+    p {
+      margin-bottom: 25px;
+    }
+    &__subtitle {
+      margin-bottom: 25px;
+    }
+    .col {
+      width: 70%;
+    }
+    &__text {
+      font-size: 20px;
+      line-height: 1.55;
+      margin-bottom: 25px;
+    }
+  }
+  @include res(768) {
+    padding: 25px 0;
+    background-image: none !important;
+    p {
+      margin-bottom: 15px;
+    }
+    &__text, &__subtitle {
+      margin-bottom: 15px;
+    }
+    &__bottom {
+      flex-direction: column;
+    }
+    .col {
+      width: 100%;
+    }
+  }
+  @include res(480) {
+    padding: 15px 0;
+  }
+}
+
+/* banner section styles  */
+.banner {
+  padding: 175px 0 135px 0;
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  &__title {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
+    color: $white;
+    margin-bottom: 14px;
+    font-family: $bitter;
+    font-size: 60px;
+    font-weight: 700;
+  }
+  &__link {
+    display: inline-block;
+    text-align: center;
+    min-width: 196px;
+    padding: 16px 10px 16px 10px;
+    background: $gradient;
+    border-radius: 25px;
+    color: $white;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.2;
+    font-family: $bitter;
+    &:hover {
+      -webkit-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+      box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
+    }
+  }
+  @include res(1024) {
+    padding: 50px 0;
+    &__title {
+      font-size: 30px;
+    }
+  }
+  @include res(480) {
+    padding: 30px 0;
+  }
+}
+
+/* contact styles section */
+.contact {
+  padding: 101px 0;
+  background: $bg-color-light;
+  &-container {
+    max-width: 641px;
+    padding: 0 15px;
+    margin: 0 auto;
+  }
+  &-form__text {
+    color: $gray;
+    font-weight: 300;
+    font-family: $open-sans;
+    margin-bottom: 50px;
+  }
+  &-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  &-form__title {
+    color: $blue;
+    font-size: 35px;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 15px;
+  }
+  &-form__block {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 19px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &-form__input,
+  &-form__textarea {
+    display: block;
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid $border-color;
+    background-color: $white;
+    font-family: $open-sans;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.625;
+    outline: none;
+    padding: 11px 10px 10px 20px;
+    box-sizing: border-box;
+    resize: none;
+    max-height: 156px;
+  }
+  &-form__label_name {
+    display: block;
+    color: $black;
+    font-family: $open-sans;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.625;
+    margin-bottom: 6px;
+  }
+  &-form__label--sm {
+    width: calc(33%);
+  }
+  &-form__label--lg {
+    width: calc(67% - 17px);
+  }
+  &-form__block--marg {
+    margin-bottom: 30px;
+  }
+  &-form__block--no-marg {
+    margin-bottom: 0;
+  }
+  &-form__textarea {
+    width: 100%;
+  }
+  &-form__label--full {
+    display: block;
+    width: 100%;
+  }
+
+  &-form__text {
+    color: $gray;
+    font-weight: 300;
+    font-family: $open-sans;
+    margin-bottom: 50px;
+  }
+
+  &-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &-form__title {
+    color: $blue;
+    font-size: 35px;
+    font-weight: 400;
+    line-height: 1.28;
+    margin-bottom: 15px;
+  }
+
+  &-form__block {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 19px;
+  }
+
+  &-form__input,
+  &-form__textarea {
+    display: block;
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid $border-color;
+    background-color: $white;
+    font-family: $open-sans;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.625;
+    outline: none;
+    padding: 11px 10px 10px 20px;
+    box-sizing: border-box;
+    resize: none;
+    max-height: 156px;
+    @include animate(background color border);
+    &:focus {
+      border: 1px solid $blue;
+      @include animate(background color border);
+    }
+  }
+
+  &-form__btn_submit {
+    background: $gradient;
+    max-width: 196px;
+    width: 100%;
+    margin: 0 auto;
+    color: $white;
+    font-size: 14px;
+    padding: 16px 10px 17px 17px;
+    border-radius: 25px;
+    line-height: 1.25;
+    cursor: pointer;
+    &:hover {
+      -webkit-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+      box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2) !important;
+    }
+  }
+
+  &-form__label_name {
+    display: block;
+    color: $black;
+    font-family: $open-sans;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.625;
+    margin-bottom: 6px;
+  }
+
+  &-form__label--sm {
+    width: calc(33%);
+  }
+
+  &-form__label--lg {
+    width: calc(67% - 17px);
+  }
+
+  &-form__block--marg {
+    margin-bottom: 30px;
+  }
+
+  &-form__block--no-marg {
+    margin-bottom: 0;
+  }
+
+  &-form__textarea {
+    width: 100%;
+  }
+
+  &-form__label--full {
+    display: block;
+    width: 100%;
+  }
+
+  &-form__btn_submit {
+    background: $gradient;
+    max-width: 196px;
+    width: 100%;
+    margin: 0 auto;
+    color: $white;
+    font-size: 14px;
+    padding: 16px 10px 17px 17px;
+    border-radius: 25px;
+    border: 0;
+    line-height: 1.25;
+    cursor: pointer;
+    &:hover {
+      border-color: $white;
+    }
+  }
+
+  @include res(1024) {
+    padding: 50px 0;
+    &-form__title {
+      font-size: 30px;
+    }
+  }
+
+  @include res(768) {
+    padding: 25px 0;
+    &-form__text {
+      margin-bottom: 25px;
+    }
+    &-form__title {
+      font-size: 25px;
+    }
+  }
+
+  @include res(480) {
+    padding: 15px 0;
+    &-form__text {
+      margin-bottom: 15px;
+    }
+    .contact-form .contact-form__label--full {
+      margin-bottom: 0;
+    }
+    &-form__block--marg {
+      margin-bottom: 25px;
+    }
+    &-form__block--first {
+      margin-bottom: 0;
+    }
+    &-form__label {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    &-form__block {
+      flex-direction: column;
+    }
+  }
+
+}

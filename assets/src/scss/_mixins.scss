@@ -1,0 +1,271 @@
+@mixin triangle($size, $color, $direction) {
+  $width: nth($size, 1);
+  $height: nth($size, length($size));
+  $foreground-color: nth($color, 1);
+  $background-color: if(length($color) == 2, nth($color, 2), transparent);
+  height: 0;
+  width: 0;
+
+  @if ($direction == up) or ($direction == down) or ($direction == right) or ($direction == left) {
+    $width: $width / 2;
+    $height: if(length($size) > 1, $height, $height/2);
+
+    @if $direction == up {
+      border-bottom: $height solid $foreground-color;
+      border-left: $width solid $background-color;
+      border-right: $width solid $background-color;
+    } @else if $direction == right {
+      border-bottom: $width solid $background-color;
+      border-left: $height solid $foreground-color;
+      border-top: $width solid $background-color;
+    } @else if $direction == down {
+      border-left: $width solid $background-color;
+      border-right: $width solid $background-color;
+      border-top: $height solid $foreground-color;
+    } @else if $direction == left {
+      border-bottom: $width solid $background-color;
+      border-right: $height solid $foreground-color;
+      border-top: $width solid $background-color;
+    }
+  } @else if ($direction == up-right) or ($direction == up-left) {
+    border-top: $height solid $foreground-color;
+
+    @if $direction == up-right {
+      border-left:  $width solid $background-color;
+    } @else if $direction == up-left {
+      border-right: $width solid $background-color;
+    }
+  } @else if ($direction == down-right) or ($direction == down-left) {
+    border-bottom: $height solid $foreground-color;
+
+    @if $direction == down-right {
+      border-left:  $width solid $background-color;
+    } @else if $direction == down-left {
+      border-right: $width solid $background-color;
+    }
+  } @else if ($direction == inset-up) {
+    border-color: $background-color $background-color $foreground-color;
+    border-style: solid;
+    border-width: $height $width;
+  } @else if ($direction == inset-down) {
+    border-color: $foreground-color $background-color $background-color;
+    border-style: solid;
+    border-width: $height $width;
+  } @else if ($direction == inset-right) {
+    border-color: $background-color $background-color $background-color $foreground-color;
+    border-style: solid;
+    border-width: $width $height;
+  } @else if ($direction == inset-left) {
+    border-color: $background-color $foreground-color $background-color $background-color;
+    border-style: solid;
+    border-width: $width $height;
+  }
+}
+
+/// Animate css properties
+// usage
+// scss - @include animate(color);
+//     or @include animate(color width);
+//     or @include animate(color width, 1s, linear);
+//
+$animation-speed: .3s !default;
+
+@mixin animate($properties, $duration: $animation-speed, $easing: ease-in-out) {
+  $list:();
+  @each $prop in $properties {
+    $str: #{$prop} #{$duration} #{$easing};
+    $list: join($list, #{$str}, comma);
+  }
+  transition: $list;
+}
+
+// list reset
+%listreset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// clearfix
+%clearfix {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+//
+// @include inline-grid(top);
+//
+
+@mixin inline-grid($valign: middle) {
+  @extend %listreset;
+
+  font-size: 0;
+
+  > li {
+    display: inline-block;
+    vertical-align: $valign;
+    font-size: 14px;
+  }
+}
+
+//
+//@include pseudo();
+//
+
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+  content: '#{$content}';
+    display: $display;
+    position: $pos;
+}
+
+//
+//@include icomoon(/0900);
+//
+
+@mixin icomoon($content: false) {
+  @if $content {
+    content: '#{$content}';
+  }
+  
+  display: block;
+  font-family: "icomoon" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+//
+// @include z-i(absolute, 9999);
+//
+
+@mixin z-i($pos: relative, $count: 999) {
+  position: $pos;
+  z-index: $count;
+}
+
+// div {
+//    @include absolute(100px, 100px, auto, auto);
+// }
+
+@mixin absolute($top: 0, $right: 0, $bottom: 0, $left: 0) {
+   position: absolute; 
+   top: $top;
+   right: $right;
+   bottom: $bottom;
+   left: $left;
+}
+
+//
+// @include flex(center, justify-content);
+//
+
+@mixin flex($align: center, $justify: center) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+//
+// @include bg(contain);
+//
+
+@mixin bg($size: cover, $pos: 50% 50%) {
+  background-repeat: no-repeat;
+  background-position: $pos;
+  background-size: $size;
+}
+
+/**
+ *  Clearfix
+ *
+ *  Usage: append to container, that contains floated elements - @include clearfix;
+ */
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+        width: 100%;
+        height: 0;
+    }
+}
+
+
+/**
+ *  «Respond to» mixin
+ *
+ *  Mixin to manage responsive breakpoints
+ *  @param {String} $breakpoint - Breakpoint name
+ *  @author Hugo Giraudel
+ *
+ *  @require $breakpoints
+ */
+$breakpoints: (
+    'laptop': 1399px,
+    'tablet': 1199px,
+    'phone':  767px,
+);
+@mixin respond-to( $breakpoint ) {
+    @if map-has-key( $breakpoints, $breakpoint ) {
+        @media ( max-width: map-get( $breakpoints, $breakpoint ) ) {
+            @content;
+        }
+    }
+
+    @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys( $breakpoints )}.";
+    }
+}
+@mixin res($bp) {
+  @media screen and (max-width: $bp + px) {
+    @content;
+  }
+}
+
+
+/**
+ *  Placeholder
+ *
+ *  Usage: append to input fields
+ */
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root('::-moz-placeholder') {
+    @content;
+  }
+  @include optional-at-root('::placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-ms-input-placeholder') {
+    @content;
+  }
+}

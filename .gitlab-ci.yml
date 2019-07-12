@@ -1,0 +1,34 @@
+image: mklkj/php-node-composer-npm
+
+stages:
+    - deploy
+
+
+before_script:
+    # Install project dependencies
+    - apt-get install sshpass
+    - composer self-update
+    - npm install -g yarn gulp
+    # Build main app
+    - composer install
+    - yarn install
+    - gulp build --production
+    # Remove fat sources
+    - rm -rf .git
+    - rm -rf node_modules
+
+
+deploy-qa:
+    stage: deploy
+    only:
+        - qa
+    script:
+        # Deploy to development server (for QA)
+        - rsync -a --stats --rsh="sshpass -p $QA_PASW ssh -o StrictHostKeyChecking=no -l $QA_USER" ./ $QA_HOST:$QA_PATH
+
+deploy-stable:
+    stage: deploy
+    only:
+        - stable
+    script:
+        - rsync -a --stats --rsh="sshpass -p $STAGING_PASW ssh -o StrictHostKeyChecking=no -l $STAGING_USER" ./ $STAGING_HOST:$STAGING_PATH
